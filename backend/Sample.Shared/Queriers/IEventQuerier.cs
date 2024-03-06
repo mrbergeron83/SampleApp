@@ -4,5 +4,5 @@ namespace Sample.Shared.Queriers;
 
 public interface IEventQuerier
 {
-    public IEnumerable<EventDto> GetEvents();
+    public IEnumerable<EventModel> GetEvents();
 }

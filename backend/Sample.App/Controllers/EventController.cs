@@ -8,13 +8,13 @@ namespace Sample.App.Controllers;
 public class EventController : ControllerBase
 {
     [HttpGet(Name = "GetEvents")]
-    public IEnumerable<EventDto> Get()
+    public IEnumerable<EventModel> Get()
     {
         return Enumerable
             .Range(1, 5)
             .Select(index =>
             {
-                return new EventDto()
+                return new EventModel()
                 {
                     Id = index,
                     Name = $"Name {index}",

@@ -2,7 +2,7 @@
 
 namespace Sample.Shared.Dtos;
 
-public class EventDto
+public class EventModel
 {
     public int? Id { get; set; }
 

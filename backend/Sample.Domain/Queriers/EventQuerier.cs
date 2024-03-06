@@ -5,7 +5,7 @@ namespace Sample.Domain.Queriers;
 
 public class EventQuerier : IEventQuerier
 {
-    public IEnumerable<EventDto> GetEvents()
+    public IEnumerable<EventModel> GetEvents()
     {
         throw new NotImplementedException();
     }
