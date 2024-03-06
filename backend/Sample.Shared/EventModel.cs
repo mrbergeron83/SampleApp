@@ -5,7 +5,6 @@ namespace Sample.Shared.Dtos;
 public class EventModel
 {
     public int? Id { get; set; }
-
     [Required]
     [StringLength(35)]
     public string Name { get; set; } = null!;
