@@ -12,7 +12,17 @@ public class EventController : ControllerBase
     {
         return Enumerable
             .Range(1, 5)
-            .Select(index => new EventDto($"Name {index}", $"Description {index}", new DateTimeOffset().UtcTicks, new DateTimeOffset().UtcTicks))
+            .Select(index =>
+            {
+                return new EventDto()
+                {
+                    Id = index,
+                    Name = $"Name {index}",
+                    Description = $"Description {index}",
+                    DateFromUtcTicks = new DateTimeOffset().UtcTicks,
+                    DateToUtcTicks = new DateTimeOffset().UtcTicks
+                };
+            })
             .ToArray();
     }
 }
