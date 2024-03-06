@@ -9,7 +9,6 @@ public class EventModel
     [Required]
     [StringLength(35)]
     public string Name { get; set; } = null!;
-
     [Required]
     public string Description { get; set; } = null!;
     [Required]
