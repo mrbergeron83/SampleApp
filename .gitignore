@@ -3,8 +3,8 @@
 ################################################################################
 
 /.vs/**
-/backend/Sample.App/LocalDatabase.db
-/backend/Sample.App/LocalDatabase.db-shm
-/backend/Sample.App/LocalDatabase.db-wal
+/backend/Sample.App/sample.db
+/backend/Sample.App/sample.db-shm
+/backend/Sample.App/sample.db-wal
 /**/**/bin/**
 /**/**/obj/**

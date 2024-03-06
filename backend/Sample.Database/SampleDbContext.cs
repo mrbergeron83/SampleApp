@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using dotenv.net.Utilities;
+using Microsoft.EntityFrameworkCore;
 using Sample.Database.Models;
 
 namespace Sample.Database;
@@ -8,7 +8,7 @@ public class SampleDbContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseSqlite("Data Source=LocalDatabase.db");
+        options.UseSqlite(EnvReader.GetStringValue("DB_CONNECTION_STRING"));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

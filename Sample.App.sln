@@ -5,11 +5,18 @@ VisualStudioVersion = 17.9.34407.89
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.App", "backend\Sample.App\Sample.App.csproj", "{47DD1346-D0E9-4240-AB0A-44A49602ABAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Shared", "backend\Sample.Shared\Sample.Shared.csproj", "{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Shared", "backend\Sample.Shared\Sample.Shared.csproj", "{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Database", "backend\Sample.Database\Sample.Database.csproj", "{89D1663D-6777-4372-A207-1A6E1E63561D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Database", "backend\Sample.Database\Sample.Database.csproj", "{89D1663D-6777-4372-A207-1A6E1E63561D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Domain", "backend\Sample.Domain\Sample.Domain.csproj", "{6A811F63-74D9-4BA8-969B-0512F4E14A32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Domain", "backend\Sample.Domain\Sample.Domain.csproj", "{6A811F63-74D9-4BA8-969B-0512F4E14A32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1331F867-4547-43F8-8FFC-21EF37FC4918}"
+	ProjectSection(SolutionItems) = preProject
+		backend.Dockerfile = backend.Dockerfile
+		docker-compose.yml = docker-compose.yml
+		local.env = local.env
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

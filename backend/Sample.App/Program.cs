@@ -1,4 +1,5 @@
 
+using dotenv.net;
 using Sample.Domain;
 
 namespace Sample.App
@@ -7,6 +8,7 @@ namespace Sample.App
     {
         public static void Main(string[] args)
         {
+            DotEnv.Load();
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
