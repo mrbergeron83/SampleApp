@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/**
+/backend/Sample.App/LocalDatabase.db
+/backend/Sample.App/LocalDatabase.db-shm
+/backend/Sample.App/LocalDatabase.db-wal
+/**/**/bin/**
+/**/**/obj/**
