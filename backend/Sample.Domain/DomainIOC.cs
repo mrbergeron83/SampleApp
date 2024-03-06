@@ -28,6 +28,7 @@ public class DomainIOC
         {
             Console.WriteLine("An error occurred while migrating the database.");
             Console.WriteLine(ex.Message);
+            throw;
         }
     }
 }

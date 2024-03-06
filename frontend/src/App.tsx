@@ -8,7 +8,6 @@ function App() {
   const apiClient = useContext(SampleApiContext);
   const [events, setEvents] = useState<EventModel[]>();
   useEffect(() => {
-    // Function to fetch weather forecast data
     const fetchEvents = async () => {
       try {
         if (apiClient) {
@@ -16,7 +15,7 @@ function App() {
           setEvents(response || []);
         }
       } catch (error) {
-        console.error("Failed to fetch weather forecast:", error);
+        console.error("Failed to fetch events:", error);
       }
     };
 

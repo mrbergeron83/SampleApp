@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "dotenv -e ./dev.env react-scripts start",
-    "start:prod": "dotenv -e ./env/prod.env react-scripts start",
+    "start:prod": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -6,7 +6,22 @@ services:
     volumes:
       - sqlite-data:/app/db
     env_file: 
-      - local.env
+      - backend.local.env
 
+  sample-frontend:
+    build:
+      dockerfile: /frontend.Dockerfile
+    env_file: 
+      - frontend.local.env
+
+  nginx:
+    image: nginx:1.25.4-alpine
+    ports:
+      - "2525:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - sample-backend
+      - sample-frontend
 volumes:
   sqlite-data:

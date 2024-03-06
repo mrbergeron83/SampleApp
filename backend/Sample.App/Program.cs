@@ -1,5 +1,6 @@
 
 using dotenv.net;
+using dotenv.net.Utilities;
 using Sample.Domain;
 
 namespace Sample.App
@@ -10,6 +11,7 @@ namespace Sample.App
         {
             var sampleCorsPolicy = "SampleCorsPolicy";
             DotEnv.Load();
+            var frontendCorsAddress = EnvReader.GetStringValue("FRONTEND_CORS_ADDRESS");
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -17,12 +19,13 @@ namespace Sample.App
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            Console.WriteLine($"Allowing cors for {frontendCorsAddress}");
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(name: sampleCorsPolicy,
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:3000")
+                        policy.WithOrigins(frontendCorsAddress)
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                     });

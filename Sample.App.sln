@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Domain", "backend\Sa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1331F867-4547-43F8-8FFC-21EF37FC4918}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		backend.Dockerfile = backend.Dockerfile
 		docker-compose.yml = docker-compose.yml
-		local.env = local.env
+		backend.local.env = backend.local.env
+		frontend.Dockerfile = frontend.Dockerfile
+		frontend.local.env = frontend.local.env
+		nginx.conf = nginx.conf
 	EndProjectSection
 EndProject
 Global
