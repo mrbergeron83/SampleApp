@@ -1,11 +1,10 @@
-﻿using Sample.Shared.Dtos;
-using Sample.Shared.Queriers;
+﻿using Sample.Domain.Models;
 
 namespace Sample.Domain.Queriers;
 
 public class EventQuerier : IEventQuerier
 {
-    public IEnumerable<EventModel> GetEvents()
+    public Task<IEnumerable<EventModel>> GetEvents()
     {
         throw new NotImplementedException();
     }

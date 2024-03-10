@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sample.Shared.Dtos;
+namespace Sample.Domain.Models;
 
 public class EventModel
 {
@@ -11,7 +11,7 @@ public class EventModel
     [Required]
     public string Description { get; set; } = null!;
     [Required]
-    public long DateFromUtcTicks{ get; set; }
+    public long DateFromUtcTicks { get; set; }
     [Required]
     public long DateToUtcTicks { get; set; }
 }

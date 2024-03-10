@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sample.Database.Models;
 
-[Table("tbl_Events", Schema = "Sample")]
+[Table("Events")]
 public class EventDbm
 {
     [Key]

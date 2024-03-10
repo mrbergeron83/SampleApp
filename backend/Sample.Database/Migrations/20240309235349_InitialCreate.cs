@@ -11,12 +11,8 @@ namespace Sample.Database.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "Sample");
-
             migrationBuilder.CreateTable(
-                name: "tbl_Events",
-                schema: "Sample",
+                name: "Events",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -28,7 +24,7 @@ namespace Sample.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tbl_Events", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
         }
 
@@ -36,8 +32,7 @@ namespace Sample.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "tbl_Events",
-                schema: "Sample");
+                name: "Events");
         }
     }
 }

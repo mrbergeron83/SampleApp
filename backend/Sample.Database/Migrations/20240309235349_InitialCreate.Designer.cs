@@ -11,7 +11,7 @@ using Sample.Database;
 namespace Sample.Database.Migrations
 {
     [DbContext(typeof(SampleDbContext))]
-    [Migration("20240306052938_InitialCreate")]
+    [Migration("20240309235349_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -43,7 +43,7 @@ namespace Sample.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tbl_Events", "Sample");
+                    b.ToTable("Events");
                 });
 #pragma warning restore 612, 618
         }

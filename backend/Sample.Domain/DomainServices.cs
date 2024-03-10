@@ -1,14 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using dotenv.net.Utilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.Database;
+using Sample.Domain.Events;
 
 namespace Sample.Domain;
 
-public class DomainIOC
+public class DomainServices
 {
     public static void Register(IServiceCollection services)
     {
-        services.AddDbContext<SampleDbContext>();
+        services.AddDbContext<SampleDbContext>(options =>
+        {
+            options.UseSqlite(EnvReader.GetStringValue("DB_CONNECTION_STRING"));
+        });
+
+        services.AddScoped<CreateEvent>();
     }
 
     public static void InitDatabase(IServiceProvider serviceProvider)

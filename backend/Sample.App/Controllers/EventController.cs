@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sample.Shared.Dtos;
+using Sample.Domain.Events;
+using Sample.Domain.Models;
 
 namespace Sample.App.Controllers;
 
@@ -7,6 +8,13 @@ namespace Sample.App.Controllers;
 [Route("/events")]
 public class EventController : ControllerBase
 {
+    private readonly CreateEvent _createEvent;
+
+    public EventController(CreateEvent createEvent)
+    {
+        _createEvent = createEvent;
+    }
+
     [HttpGet(Name = "GetEvents")]
     public IEnumerable<EventModel> Get()
     {
@@ -24,5 +32,11 @@ public class EventController : ControllerBase
                 };
             })
             .ToArray();
+    }
+
+    [HttpPost(Name = "CreateEvent")]
+    public async Task<EventModel> Post([FromBody] EventModel eventModel)
+    {
+        return await _createEvent.Execute(eventModel);
     }
 }

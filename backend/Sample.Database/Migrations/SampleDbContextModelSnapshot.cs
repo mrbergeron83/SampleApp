@@ -40,7 +40,7 @@ namespace Sample.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tbl_Events", "Sample");
+                    b.ToTable("Events");
                 });
 #pragma warning restore 612, 618
         }

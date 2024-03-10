@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34407.89
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.App", "backend\Sample.App\Sample.App.csproj", "{47DD1346-D0E9-4240-AB0A-44A49602ABAE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Shared", "backend\Sample.Shared\Sample.Shared.csproj", "{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Database", "backend\Sample.Database\Sample.Database.csproj", "{89D1663D-6777-4372-A207-1A6E1E63561D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Domain", "backend\Sample.Domain\Sample.Domain.csproj", "{6A811F63-74D9-4BA8-969B-0512F4E14A32}"
@@ -15,12 +13,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
 		backend.Dockerfile = backend.Dockerfile
-		docker-compose.yml = docker-compose.yml
 		backend.local.env = backend.local.env
+		docker-compose.yml = docker-compose.yml
 		frontend.Dockerfile = frontend.Dockerfile
 		frontend.local.env = frontend.local.env
 		nginx.conf = nginx.conf
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Test", "backend\Sample.Test\Sample.Test.csproj", "{44A7A3B9-2E82-4A16-BED3-F2BF414CDB5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +32,6 @@ Global
 		{47DD1346-D0E9-4240-AB0A-44A49602ABAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47DD1346-D0E9-4240-AB0A-44A49602ABAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47DD1346-D0E9-4240-AB0A-44A49602ABAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCFB8D4D-20DE-4C86-9EC2-7857981A8F26}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89D1663D-6777-4372-A207-1A6E1E63561D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89D1663D-6777-4372-A207-1A6E1E63561D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89D1663D-6777-4372-A207-1A6E1E63561D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,6 +40,10 @@ Global
 		{6A811F63-74D9-4BA8-969B-0512F4E14A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A811F63-74D9-4BA8-969B-0512F4E14A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A811F63-74D9-4BA8-969B-0512F4E14A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44A7A3B9-2E82-4A16-BED3-F2BF414CDB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44A7A3B9-2E82-4A16-BED3-F2BF414CDB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44A7A3B9-2E82-4A16-BED3-F2BF414CDB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44A7A3B9-2E82-4A16-BED3-F2BF414CDB5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
