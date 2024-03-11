@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Sample.Domain.Models;
 using System.Text;
