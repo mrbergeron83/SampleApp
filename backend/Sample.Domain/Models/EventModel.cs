@@ -11,7 +11,7 @@ public class EventModel
     [Required]
     public string Description { get; set; } = null!;
     [Required]
-    public long DateFromUtcTicks { get; set; }
+    public long DateFromUnixSeconds { get; set; }
     [Required]
-    public long DateToUtcTicks { get; set; }
+    public long DateToUnixSeconds { get; set; }
 }

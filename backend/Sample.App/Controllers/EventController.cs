@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sample.Domain.Events;
 using Sample.Domain.Models;
+using Sample.Domain.Repositories;
 
 namespace Sample.App.Controllers;
 
@@ -9,29 +10,18 @@ namespace Sample.App.Controllers;
 public class EventController : ControllerBase
 {
     private readonly CreateEvent _createEvent;
+    private readonly EventRepository _eventRepository;
 
-    public EventController(CreateEvent createEvent)
+    public EventController(CreateEvent createEvent, EventRepository eventRepository)
     {
         _createEvent = createEvent;
+        _eventRepository = eventRepository;
     }
 
     [HttpGet(Name = "GetEvents")]
-    public IEnumerable<EventModel> Get()
+    public async Task<IEnumerable<EventModel>> Get()
     {
-        return Enumerable
-            .Range(1, 5)
-            .Select(index =>
-            {
-                return new EventModel()
-                {
-                    Id = index,
-                    Name = $"Name {index}",
-                    Description = $"Description {index}",
-                    DateFromUtcTicks = new DateTimeOffset().UtcTicks,
-                    DateToUtcTicks = new DateTimeOffset().UtcTicks
-                };
-            })
-            .ToArray();
+        return await this._eventRepository.GetEvents();
     }
 
     [HttpPost(Name = "CreateEvent")]

@@ -23,8 +23,8 @@ public class CreateEvent
         {
             Name = model.Name,
             Description = model.Description,
-            DateFrom = DateTimeOffset.FromUnixTimeSeconds(model.DateFromUtcTicks),
-            DateTo = DateTimeOffset.FromUnixTimeSeconds(model.DateToUtcTicks)
+            DateFrom = DateTimeOffset.FromUnixTimeSeconds(model.DateFromUnixSeconds),
+            DateTo = DateTimeOffset.FromUnixTimeSeconds(model.DateToUnixSeconds)
         };
         _db.Add(dbm);
         await _db.SaveChangesAsync();

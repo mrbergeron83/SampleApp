@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.Database;
 using Sample.Domain.Events;
+using Sample.Domain.Repositories;
 
 namespace Sample.Domain;
 
@@ -15,6 +16,7 @@ public class DomainServices
             options.UseSqlite(EnvReader.GetStringValue("DB_CONNECTION_STRING"));
         });
 
+        services.AddScoped<EventRepository>();
         services.AddScoped<CreateEvent>();
     }
 
