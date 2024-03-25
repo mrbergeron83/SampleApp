@@ -6,11 +6,12 @@ using Sample.Database.Models;
 using Sample.Domain.Models;
 using System.Text;
 
-namespace Sample.Test;
+namespace Sample.Test.App.Controllers;
 
 public class GivenEventsController : SampleTestBase
 {
     private readonly HttpClient _httpClient;
+
     public GivenEventsController()
     {
         _httpClient = CreateClient();
@@ -19,7 +20,7 @@ public class GivenEventsController : SampleTestBase
     [Fact]
     public async Task When_Getting_then_returns_Events()
     {
-        using var scope = this.Services.CreateScope();
+        using var scope = Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<SampleDbContext>();
 
         var now = DateTimeOffset.UtcNow;
@@ -30,7 +31,7 @@ public class GivenEventsController : SampleTestBase
         db.AddRange(events);
         await db.SaveChangesAsync();
 
-        var response = await this._httpClient.GetAsync("/events");
+        var response = await _httpClient.GetAsync("/events");
         response.EnsureSuccessStatusCode();
         var results = JsonConvert.DeserializeObject<EventModel[]>(await response.Content.ReadAsStringAsync());
 
@@ -77,6 +78,20 @@ public class GivenEventsController : SampleTestBase
         expectedEventModel.Id = 1;
 
         results.Should().BeEquivalentTo(expectedEventModel);
+
+        using var scope = Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<SampleDbContext>();
+
+        var expecxtedDbModel = new EventDbm()
+        {
+            Id = expectedEventModel.Id.Value,
+            Name = expectedEventModel.Name,
+            Description = expectedEventModel.Description,
+            DateFrom = DateTimeOffset.FromUnixTimeSeconds(expectedEventModel.DateFromUnixSeconds),
+            DateTo = DateTimeOffset.FromUnixTimeSeconds(expectedEventModel.DateToUnixSeconds)
+        };
+
+        var events = db.Events.Should().ContainEquivalentOf(expecxtedDbModel);
     }
 
     [Fact]
