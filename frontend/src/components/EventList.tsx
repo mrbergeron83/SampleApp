@@ -8,13 +8,20 @@ import {
   ListItemText,
   Container,
   Pagination,
+  Button,
+  Modal,
+  Box,
 } from "@mui/material";
+import { CreateEvent } from "./CreateEvent";
+import { DateTime } from "luxon";
 
 export const EventList = (): JSX.Element => {
   const eventsPerPage = 3;
   const apiClient = useContext(SampleApiContext);
   const [events, setEvents] = useState<EventModel[]>();
   const [currentPage, setCurrentPage] = useState(1);
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [refreshTrigger, setRefreshTrigger] = useState(false);
 
   const pageCount = events ? Math.ceil(events.length / eventsPerPage) : 0;
   const indexOfLastEvent = currentPage * eventsPerPage;
@@ -40,7 +47,12 @@ export const EventList = (): JSX.Element => {
     };
 
     fetchEvents();
-  }, [apiClient]);
+  }, [apiClient, refreshTrigger]);
+
+  const handleOnCreated = () => {
+    setCreateModalOpen(false);
+    setRefreshTrigger(!refreshTrigger);
+  };
 
   return (
     <Container
@@ -74,8 +86,8 @@ export const EventList = (): JSX.Element => {
             >
               <ListItemText primary={evt.name} secondary={evt.description} />
               <ListItemText
-                primary={`Starts: ${new Date(evt.dateFromUtcTicks).toLocaleDateString()}`}
-                secondary={`Ends: ${new Date(evt.dateToUtcTicks).toLocaleDateString()}`}
+                primary={`Starts: ${DateTime.fromSeconds(evt.dateFromUnixSeconds).toLocaleString(DateTime.DATETIME_SHORT)}`}
+                secondary={`Ends: ${DateTime.fromSeconds(evt.dateToUnixSeconds).toLocaleString(DateTime.DATETIME_SHORT)}`}
               />
             </ListItem>
           );
@@ -85,8 +97,30 @@ export const EventList = (): JSX.Element => {
         count={pageCount}
         page={currentPage}
         onChange={(_, v) => handlePageChange(v)}
-        sx={{ marginTop: "20px" }} // Adjust spacing as needed
+        sx={{ marginTop: "20px" }}
       />
+      <Button variant="contained" onClick={() => setCreateModalOpen(true)}>
+        Create
+      </Button>
+      <Modal open={createModalOpen} onClose={() => setCreateModalOpen(false)}>
+        <Box
+          sx={{
+            position: "absolute" as "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "50vw",
+            height: "50vh",
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+            overflow: "scroll",
+          }}
+        >
+          <CreateEvent onCreated={handleOnCreated} />
+        </Box>
+      </Modal>
     </Container>
   );
 };

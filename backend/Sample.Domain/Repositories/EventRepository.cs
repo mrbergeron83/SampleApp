@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sample.Database;
+using Sample.Database.Models;
 using Sample.Domain.Models;
 
 namespace Sample.Domain.Repositories;
@@ -15,14 +16,19 @@ public class EventRepository
 
     public async Task<IEnumerable<EventModel>> GetEvents()
     {
-        return await this._context.Events.Select(x => new EventModel
-        { 
-            Id = x.Id,
-            Name = x.Name,
-            Description = x.Description,
-            DateFromUnixSeconds = x.DateFrom.ToUnixTimeSeconds(),
-            DateToUnixSeconds = x.DateTo.ToUnixTimeSeconds()
-        })
+        return await _context.Events.Select(x => MapToModel(x))
         .ToArrayAsync();
+    }
+
+    private static EventModel MapToModel(EventDbm dbModel)
+    {
+        return new EventModel
+        {
+            Id = dbModel.Id,
+            Name = dbModel.Name,
+            Description = dbModel.Description,
+            DateFromUnixSeconds = dbModel.DateFrom.ToUnixTimeSeconds(),
+            DateToUnixSeconds = dbModel.DateTo.ToUnixTimeSeconds()
+        };
     }
 }
